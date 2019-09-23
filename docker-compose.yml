@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  ignite-service:
+    image: apacheignite/ignite:2.6.0
+    volumes:
+      - ./ignite-cluster.xml:/opt/ignite/apache-ignite-fabric/config/default-config.xml
+    environment:
+      - JVM_OPTS=-Xms512m -Xmx512m -XX:+UnlockExperimentalVMOptions -XX:MaxDirectMemorySize=512M -XX:+UseCGroupMemoryLimitForHeap -XX:+AlwaysPreTouch -XX:+UseG1GC -XX:+ScavengeBeforeFullGC -XX:+DisableExplicitGC
+    expose:
+      - "11211"
+      - "47100"
+      - "47500"
+      - "49112"
